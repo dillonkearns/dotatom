@@ -97,20 +97,3 @@ consumeService 'vim-mode-plus', 'provideVimModePlus', ({Base}) ->
     @registerCommand()
     insertionRow: ->
       super() - 1
-
-  # vim-mode-plus align regexp
-  alignLines =
-    require '/Users/dillon/.atom/packages/align-regexp/lib/align-lines'
-  TransformString = Base.getClass('TransformString')
-  class AlignRegex extends TransformString
-    @commandPrefix: 'vim-mode-plus-user'
-    @registerCommand()
-    requireInput: true
-
-    initialize: ->
-      super()
-      @onDidSetTarget =>
-        @focusInput(15)
-
-    getNewText: (text) ->
-      alignLines(text, RegExp(@input))
