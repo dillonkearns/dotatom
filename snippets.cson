@@ -56,3 +56,12 @@
           #     Sign in with GitHub
           #   </a>
           # <% end %>
+
+'.source.elm':
+    'test':
+      'prefix': 'test'
+      'body': """
+          test "$1" <|
+                \\\\() ->
+                   Expect.equal ${2:123} ${3:456}
+               """
