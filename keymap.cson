@@ -6,6 +6,7 @@
   'cmd-;': 'dillon:focus-next-pane'
   'cmd-k cmd-l': 'pane:split-right-and-copy-active-item'
   'cmd-k cmd-h': 'pane:split-left-and-copy-active-item'
+  'cmd-k cmd-j': 'pane:split-down-and-copy-active-item'
   'ctrl-i':     'cursor-history:next'
   'ctrl-o':     'cursor-history:prev'
   'ctrl-cmd-i': 'cursor-history:next-within-editor'
@@ -78,12 +79,15 @@
 
 'atom-text-editor.vim-mode-plus.normal-mode':
   'y s': 'vim-mode-plus:surround'
+  'R': 'vim-mode-plus:replace-with-register'
   'd s': 'vim-mode-plus:delete-surround-any-pair'
   'd S': 'vim-mode-plus:delete-surround'
   'c s': 'vim-mode-plus:change-surround-any-pair-allow-forwarding'
   'c S': 'vim-mode-plus:change-surround'
   'y s w': 'vim-mode-plus:surround-word'
   'y s m': 'vim-mode-plus:map-surround'
+  'space l': 'toggle-markdown-task:toggle'
+  '\\': 'toggle:visit'
 
 'body':
    # if not in vmp, cancel
@@ -122,3 +126,7 @@
   'ctrl-.': 'dillon:elm-quick-fix-and-save'
   'ctrl-,': 'dillon:elm-quick-fix-and-save-all'
   'cmd-r': 'elmjutsu:go-to-symbol'
+  'cmd-shift-m': 'elmjutsu:lift-to-top-level'
+  'cmd-shift-v': 'elmjutsu:lift-to-let'
+  'cmd-shift-i': 'elmjutsu:add-import'
+  'cmd-shift-g': 'elmjutsu:find-usages'
