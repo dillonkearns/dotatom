@@ -1,9 +1,19 @@
 "*":
   "atom-color-highlight": {}
+  "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnSave: true
+    "atom-ide-diagnostics-ui":
+      autoVisibility: true
+    use: {}
   "atom-package-deps":
     ignored: [
-      "linter"
+      "linter-elm-make"
+      "prettier-atom"
     ]
+  "atom-typescript":
+    ignoreUnusedSuggestionDiagnostics: true
+  "autocomplete-plus": {}
   build:
     buildOnSave: true
     hidePanelHeading: true
@@ -14,6 +24,7 @@
       font_family: "hasklig"
       format: "RTF"
   core:
+    automaticallyUpdate: false
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -32,13 +43,37 @@
       "minitest-snippets"
       "ruby-block"
       "ruby-test"
-      "atom-elixir"
-      "language-elixir"
-      "linter-elixir-credo"
       "minimap"
-      "atom-typescript"
-      "tree-view"
-      "linter"
+      "language-haskell"
+      "elm-instant"
+      "autocomplete-haskell"
+      "cyber-dojo"
+      "example-package"
+      "haskell-ghc-mod"
+      "language-docker"
+      "autoclose-html"
+      "git-diff-details"
+      "language-applescript"
+      "project-manager"
+      "intentions"
+      "linter-coffeelint"
+      "linter-elixir-credo"
+      "narrow"
+      "package-sync"
+      "atom-elm-test"
+      "choose-pane"
+      "demo-mode"
+      "elm-test-runner"
+      "jumpy"
+      "open-this"
+      "color-picker"
+      "language-diff"
+      "pigments"
+      "quick-highlight"
+      "toggle-markdown-task"
+      "rustfmt"
+      "linter-rust"
+      "linter-elm-make"
     ]
     telemetryConsent: "limited"
     themes: [
@@ -48,16 +83,25 @@
     titleBar: "hidden"
   "cyber-dojo":
     workspace: "/Users/dillon/Dropbox/opensource/katas/cyberdojo"
+  "demo-mode":
+    autoHideTimeout: 10000
+    initialMarginLeftInEm: 85
   editor:
     fontFamily: "Hasklig"
-    fontSize: 13
+    fontSize: 15
     invisibles: {}
+    scrollPastEnd: true
     showIndentGuide: true
+    showLineNumbers: false
+  "elm-format": {}
+  "elm-lens": {}
   elmjutsu:
     autocompleteEnabled: true
-    autocompleteMinChars: 2
+    autocompleteMaxSuggestions: 10
+    autocompleteMinChars: 0
     autocompleteSnippetsEnabled: true
     cacheDirectory: "/var/folders/rp/2jl5jpgs565fdvks2gtfkrd00000gn/T/elmjutsu52995uwKfg003zyyW"
+    datatipsEnabled: false
     globalAutocompleteEnabled: true
     hyperclickEnabled: true
     showAssociativitiesInSidekick: false
@@ -66,7 +110,6 @@
     showSourcePathsInSidekick: false
     showTypeCasesInSidekick: false
     showTypesInSidekick: false
-    typeAwareAutocompleteEnabled: true
   "exception-reporting":
     userId: "74b4342b-d1d5-a340-d5c1-b2a5af1ede2d"
   hasklig:
@@ -75,9 +118,11 @@
     autocompleteEnabled: false
   linter: {}
   "linter-elm-make":
-    alwaysCompileMain: true
+    elmMakeExecutablePath: "/Users/dillon/src/elm-typescript-interop/node_modules/.bin/elm-make"
+    useDatatips: true
   "linter-ui-default":
-    panelHeight: 69
+    hidePanelWhenEmpty: true
+    panelHeight: 300
     panelRepresents: "Entire Project"
     showPanel: true
     statusBarClickBehavior: "Jump to next issue"
@@ -85,17 +130,28 @@
     tooltipFollows: "Mouse"
   metrics:
     userId: "708651a932bd28da2969831a29830d5a9ebf3d21"
+  narrow:
+    notifiedVimModePlusSpecificDefaultKeymap: true
   "nord-atom-ui":
     tabSizing: false
   nuclide:
+    "nuclide-file-tree":
+      revealFileOnSwitch: true
+      showOpenFiles: false
+      showUncommittedChanges: false
     "nuclide-home":
       showHome: false
+  "one-light-ui": {}
   "package-sync":
     createOnChange: true
     forceOverwrite: true
   "prettier-atom":
     formatOnSaveOptions:
       enabled: true
+      excludedGlobs: [
+        "package.json"
+        "elm-package.json"
+      ]
     prettierOptions:
       semi: false
       singleQuote: true
@@ -104,6 +160,7 @@
     testFramework: "minitest"
   "seti-ui":
     font: "Default Atom Font"
+  toggle: {}
   "toggle-packages":
     togglePackages: [
       "vim-mode-plus"
@@ -114,12 +171,21 @@
     clearHighlightSearchOnResetNormalMode: true
     highlightSearch: true
     incrementalSearch: true
+    keymapBackslashToInnerCommentOrParagraphWhenToggleLineCommentsIsPending: true
+    keymapCCToChangeInnerSmartWord: true
+    keymapPToPutWithAutoIndent: true
+    keymapSemicolonToInnerAnyPairInOperatorPendingMode: true
+    keymapSemicolonToInnerAnyPairInVisualMode: true
+    keymapUnderscoreToReplaceWithRegister: true
     showHoverOnOperate: true
     showHoverOnOperateIcon: "emoji"
     showHoverSearchCounter: true
     useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
+".ansi.text":
+  editor:
+    showInvisibles: false
 ".elm.source":
   editor:
     autoIndent: true

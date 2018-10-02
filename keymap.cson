@@ -7,19 +7,15 @@
   'cmd-k cmd-l': 'pane:split-right-and-copy-active-item'
   'cmd-k cmd-h': 'pane:split-left-and-copy-active-item'
   'cmd-k cmd-j': 'pane:split-down-and-copy-active-item'
-  'ctrl-i':     'cursor-history:next'
-  'ctrl-o':     'cursor-history:prev'
   'ctrl-cmd-i': 'cursor-history:next-within-editor'
   'ctrl-cmd-o': 'cursor-history:prev-within-editor'
+  # 'ctrl-p': 'clip-history:paste-newer'
 
 'atom-text-editor.vim-mode-plus.visual-mode':
   'ctrl-t': 'vim-mode-plus-user:move-selected-text-toggle-overwrite'
-  'S': 'vim-mode-plus:surround'
 
   'ctrl-k': 'vim-mode-plus-user:move-selected-text-up'
   'ctrl-j': 'vim-mode-plus-user:move-selected-text-down'
-  # 'ctrl-h': 'vim-mode-plus-user:move-selected-text-left'
-  # 'ctrl-l': 'vim-mode-plus-user:move-selected-text-right'
 
   'cmd-K': 'vim-mode-plus-user:duplicate-selected-text-up'
   'cmd-J': 'vim-mode-plus-user:duplicate-selected-text-down'
@@ -27,38 +23,44 @@
   'cmd-L': 'vim-mode-plus-user:duplicate-selected-text-right'
 
 'atom-text-editor.vim-mode-plus.operator-pending-mode':
-  '/': 'vim-mode-plus:toggle-line-comments' # g// toggles comment on line
+  '/': 'vim-mode-plus:inner-comment'
 
 'atom-text-editor.vim-mode-plus:not(.insert-mode):not(.visual-mode)':
   'ctrl-k': 'dillon:move-current-line-up'
   'ctrl-j': 'dillon:move-current-line-down'
 
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
-  # 'enter': 'vim-mode-plus:move-to-last-line'
+  'ctrl-i':     'cursor-history:next'
+  'ctrl-o':     'cursor-history:prev'
+  'g >': 'vim-mode-plus:rotate-arguments-of-inner-pair'
+  'g <': 'vim-mode-plus:rotate-arguments-backwards-of-inner-pair'# 'enter': 'vim-mode-plus:move-to-last-line'
   'E': 'narrow:fold'
+  ':': 'command-palette:toggle'
   'space space': 'vim-mode-plus:set-register-name-to-*'
   'space o': 'vim-mode-plus-user:insert-newline-below'
   'space O': 'vim-mode-plus-user:insert-newline-above'
   'ctrl-s': 'vim-mode-plus:transform-smart-word-by-select-list'
-  # 'cmd-H': 'git-diff:move-to-previous-diff'
-  # 'cmd-L': 'git-diff:move-to-next-diff'
-  # TODO: find keys for these
-  # 'H': 'vim-mode-plus-user:move-to-previous-symbol'
-  # 'L': 'vim-mode-plus-user:move-to-next-symbol'
   'f2': 'dillon:rename-param-under-cursor'
-  'R': 'vim-mode-plus-user:align-regex'
+  # 'R': 'vim-mode-plus-user:align-regex'
   'g r': 'vim-mode-plus:reverse'
   'g s': 'vim-mode-plus:sort'
-  'Q': 'linter:previous-error'
-  'q': 'linter:next-error'
-  '!': 'vim-mode-plus-user:replace-with-execution'
+  'ctrl->': 'linter-ui-default:next'
+  'ctrl-<': 'linter-ui-default:previous'
+  # '!': 'vim-mode-plus-user:replace-with-execution'
   'ctrl-\\': 'window:reload'
+  'q': 'vim-mode-plus:move-to-next-subword'
+  'Q': 'vim-mode-plus:move-to-previous-subword'
+  "g '": 'vim-mode-plus:move-to-next-string'
+
+  # 'g n': 'vim-mode-plus:move-to-next-number'
+  # 'g N': 'vim-mode-plus:move-to-previous-number'
 
   # 'q': 'atom-keyboard-macros-vim:toggle_record_macro_vim'
   # '@': 'atom-keyboard-macros-vim:execute_macro_vim'
   # 'Q': 'atom-keyboard-macros:call_last_kbd_macro'
 
 'atom-text-editor.vim-mode-plus.operator-pending-mode, atom-text-editor.vim-mode-plus.visual-mode':
+  ',': 'vim-mode-plus:inner-arguments'
   ';': 'vim-mode-plus:inner-any-pair-allow-forwarding'
 
   # Use closing pair as forwarding version of pair-text-object
@@ -78,16 +80,13 @@
   'a space': 'vim-mode-plus-user:a-whitespace'
 
 'atom-text-editor.vim-mode-plus.normal-mode':
-  'y s': 'vim-mode-plus:surround'
   'R': 'vim-mode-plus:replace-with-register'
-  'd s': 'vim-mode-plus:delete-surround-any-pair'
-  'd S': 'vim-mode-plus:delete-surround'
-  'c s': 'vim-mode-plus:change-surround-any-pair-allow-forwarding'
-  'c S': 'vim-mode-plus:change-surround'
-  'y s w': 'vim-mode-plus:surround-word'
-  'y s m': 'vim-mode-plus:map-surround'
+  'y /': 'vim-mode-plus:duplicate-with-comment-out-original'
   'space l': 'toggle-markdown-task:toggle'
   '\\': 'toggle:visit'
+  'g f':      'open-this:here'
+  'ctrl-w f': 'open-this:split-down'
+  'ctrl-w F': 'open-this:split-right'
 
 'body':
    # if not in vmp, cancel
@@ -99,6 +98,8 @@
   'ctrl-tab': 'pane:show-next-item'
   'ctrl-shift-tab ^ctrl': 'unset!'
   'ctrl-shift-tab': 'pane:show-previous-item'
+  'cmd-!': 'dillon:commit-all'
+  'cmd-shift-u': 'github:unstage-all-changes'
 
 'atom-text-editor.vim-mode-plus':
   'ctrl-;': 'vim-mode-plus:reset-normal-mode'

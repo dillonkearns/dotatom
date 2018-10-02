@@ -13,6 +13,7 @@
 #   if path.extname(editor.getPath()) is '.md'
 #     editor.setSoftWrapped(true)
 
+
 # vim-mode-plus configuration
 hlsearch = (editor) ->
   atom.commands.dispatch(editor, 'quick-highlight:clear')
@@ -22,6 +23,7 @@ hlsearch = (editor) ->
 atom.commands.add 'atom-text-editor', 'dillon:search-current-word', ->
   hlsearch(this)
   atom.commands.dispatch(this, 'vim-mode:search-current-word')
+
 
 atom.commands.add 'atom-text-editor', 'dillon:reverse-search-current-word', ->
   hlsearch(this)
@@ -66,11 +68,20 @@ atom.commands.add 'atom-text-editor', 'dillon:focus-next-pane', ->
   atom.commands.dispatch(this, 'window:focus-next-pane')
   atom.commands.dispatch(this, 'vim-mode-plus:reset-normal-mode')
 
-atom.commands.add 'atom-text-editor', 'custom:insert-newline-above': ->
-  atom.workspace.getActiveTextEditor()?.insertNewlineAbove()
+atom.commands.add 'atom-text-editor', 'dillon:commit-all', ->
+  atom.commands.dispatch(this, 'github:stage-all-changes')
+  atom.commands.dispatch(this, 'github:toggle-git-tab-focus')
+  atom.commands.dispatch(this, 'github:commit')
+  atom.commands.dispatch(this, 'github:push')
 
-atom.commands.add 'atom-text-editor', 'custom:insert-newline-below': ->
-  atom.workspace.getActiveTextEditor()?.insertNewlineBelow()
+
+
+
+# atom.commands.add 'atom-text-editor', 'custom:insert-newline-above': ->
+#   atom.workspace.getActiveTextEditor()?.insertNewlineAbove()
+#
+# atom.commands.add 'atom-text-editor', 'custom:insert-newline-below': ->
+#   atom.workspace.getActiveTextEditor()?.insertNewlineBelow()
 
 
 # vim-mode-plus extensions
@@ -81,19 +92,30 @@ consumeService = (packageName, providerName, fn) ->
       fn(service)
       disposable.dispose()
 
-consumeService 'vim-mode-plus', 'provideVimModePlus', ({Base}) ->
-  # vim-mode-plus add spaces above or below
-  Operator = Base.getClass('Operator')
-  class InsertNewlineBelow extends Operator
-    @commandPrefix: 'vim-mode-plus-user'
-    @registerCommand()
-    requireTarget: false
-    insertionRow: ->
-      @editor.getCursorScreenPosition().row
-    execute: ->
-      @editor.getBuffer().insert([@insertionRow(), Infinity], "\n".repeat(@getCount()))
-
-  class InsertNewlineAbove extends InsertNewlineBelow
-    @registerCommand()
-    insertionRow: ->
-      super() - 1
+# consumeService 'vim-mode-plus', 'provideVimModePlus', ({Base}) ->
+#   # vim-mode-plus add spaces above or below
+#   Operator = Base.getClass('Operator')
+#   class InsertNewlineBelow extends Operator
+#     @commandPrefix: 'vim-mode-plus-user'
+#     @registerCommand()
+#     requireTarget: false
+#     insertionRow: ->
+#       @editor.getCursorScreenPosition().row
+#     execute: ->
+#       @editor.getBuffer().insert([@insertionRow(), Infinity], "\n".repeat(@getCount()))
+#
+#   class InsertNewlineAbove extends InsertNewlineBelow
+#     @registerCommand()
+#     insertionRow: ->
+#       super() - 1
+#
+#   class ElmExtractFunction extends Operator
+#     @commandPrefix: 'vim-mode-plus-user'
+#     @registerCommand()
+#     target: null
+#     execute: ->
+#       # make a selection before putting
+#       # @startMutation(@selectTarget.bind(this))
+#       # atom.workspace.getActiveTextEditor()?.save()
+#       workspace = atom.views.getView(atom.workspace)
+#       atom.commands.dispatch(workspace, 'elmjutsu:lift-to-top-level')

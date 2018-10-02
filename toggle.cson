@@ -23,4 +23,5 @@
 ],
 'source.elm': [
   ['True', 'False']
+  ['TODO', 'DONE']
 ]

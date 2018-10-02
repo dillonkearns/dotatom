@@ -63,5 +63,26 @@
       'body': """
           test "$1" <|
                 \\\\() ->
-                   Expect.equal ${2:123} ${3:456}
+                   ${2:123}
+                   |> Expect.equal ${3:456}
                """
+#   'let':
+#     'prefix': 'let'
+#     'body': '''
+#             let
+#               $1 =
+#                 $2
+#             in
+#               $3
+#             '''
+#   'updateNoOp':
+#     'prefix': 'm'
+#     'body': 'model ! []'
+#   'if':
+#     'prefix': 'if'
+#     'body': '''
+#             if $1 then
+#               $2
+#             else
+#               $3
+#             '''
